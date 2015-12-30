@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#3B414D</color>
+    <color name="colorPrimaryDark">#1A8B94</color>
+    <color name="colorAccent">#46AAA0</color>
+    <color name="colorBackground">#EEEEEE</color>
+
+    <color name="colorDivider">#B6B6B6</color>
+    <color name="colorToolbarText">#DADADA</color>
+    <color name="colorButtonText">#FFFFFF</color>
+
+    <color name="signupBackgroundColor">#FAFAFA</color>
+    <color name="backgroundColor">#FAFAFA</color>
+</resources>
