@@ -13,6 +13,7 @@ import android.widget.TextView;
 import com.challenge.androidchallenge.Retrofit.POJO.DetailedKingdom;
 import com.challenge.androidchallenge.Utility.BlurTransformation;
 import com.challenge.androidchallenge.Utility.SessionManager;
+import com.squareup.picasso.Callback;
 import com.squareup.picasso.Picasso;
 
 
@@ -121,8 +122,17 @@ public class QuestFragmentPage extends Fragment implements View.OnClickListener{
                 .error(R.drawable.no_image_large) //If there is an error in loading the image display the No Image, image
                 .noFade()
                 .transform(new BlurTransformation(mActivity))
-                .into(ivGiverImageBackground);
+                .into(ivGiverImageBackground, new Callback() {
+                    @Override
+                    public void onSuccess() {
+                    }
 
+                    @Override
+                    public void onError() {
+                        //Need to hide the background image if it fails. Otherwise we will have overlapping on error images
+                        ivGiverImageBackground.setVisibility(View.GONE);
+                    }
+                });
 
         //Load the giver image
         Picasso.with(mActivity)

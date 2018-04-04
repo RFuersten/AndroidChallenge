@@ -180,11 +180,8 @@ public class SignupActivity extends AppCompatActivity implements View.OnClickLis
     //Method to handle starting of the Kingdoms Activity
     private void startKingdomsActivity(){
         Intent intent = new Intent(this, KingdomsListActivity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
         startActivity(intent);
-
-        //Call finish() on SignupActivity to prevent phone back button going back
-        //to the SignupActivity once the KingdomsActivity intent has started
-        finish();
     }
 
 

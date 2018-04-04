@@ -97,11 +97,10 @@ public class KingdomsListFragment extends Fragment {
             session.clearPreferenceFile();
 
             //Bring the user back to the SignupActivity
-            startActivity(new Intent(getActivity(), SignupActivity.class));
+            Intent intent = new Intent(getActivity(), SignupActivity.class);
+            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+            startActivity(intent);
 
-            //Call finish() on KingdomsActivity to prevent phone back button going back
-            //to the KingdomsActivity once the SignupActivity intent has started
-            getActivity().finish();
             return true;
         }
 
