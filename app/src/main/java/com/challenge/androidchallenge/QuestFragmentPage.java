@@ -23,7 +23,7 @@ public class QuestFragmentPage extends Fragment implements View.OnClickListener{
 
     SessionManager session;
 
-    ImageView ivGiverImage, ivGiverImageBackground, ivQuestCompleted;
+    ImageView ivQuestImage, ivQuestImageBackground, ivQuestCompleted;
     TextView tvQuestName, tvQuestCompleted, tvQuestDescription, tvQuestGiverName;
     //TextView Button to mark a quest completed
     TextView tbCompleteQuest;
@@ -87,8 +87,8 @@ public class QuestFragmentPage extends Fragment implements View.OnClickListener{
         tvQuestDescription = (TextView) view.findViewById(R.id.tvQuestDescription);
         tvQuestCompleted = (TextView) view.findViewById(R.id.tvQuestCompleted);
 
-        ivGiverImage = (ImageView) view.findViewById(R.id.ivGiverImage);
-        ivGiverImageBackground = (ImageView) view.findViewById(R.id.ivGiverImageBackground);
+        ivQuestImage = (ImageView) view.findViewById(R.id.ivQuestImage);
+        ivQuestImageBackground = (ImageView) view.findViewById(R.id.ivQuestImageBackground);
         tvQuestGiverName = (TextView) view.findViewById(R.id.tvQuestGiverName);
 
         ivQuestCompleted = (ImageView) view.findViewById(R.id.ivQuestCompleted);
@@ -118,11 +118,11 @@ public class QuestFragmentPage extends Fragment implements View.OnClickListener{
 
         //Load the header background image
         Picasso.with(mActivity)
-                .load(kingdom.getQuests().get(questNumber).getGiver().getImage())
+                .load(kingdom.getQuests().get(questNumber).getImage())
                 .error(R.drawable.no_image_large) //If there is an error in loading the image display the No Image, image
                 .noFade()
                 .transform(new BlurTransformation(mActivity))
-                .into(ivGiverImageBackground, new Callback() {
+                .into(ivQuestImageBackground, new Callback() {
                     @Override
                     public void onSuccess() {
                     }
@@ -130,17 +130,17 @@ public class QuestFragmentPage extends Fragment implements View.OnClickListener{
                     @Override
                     public void onError() {
                         //Need to hide the background image if it fails. Otherwise we will have overlapping on error images
-                        ivGiverImageBackground.setVisibility(View.GONE);
+                        ivQuestImageBackground.setVisibility(View.GONE);
                     }
                 });
 
         //Load the giver image
         Picasso.with(mActivity)
-                .load(kingdom.getQuests().get(questNumber).getGiver().getImage())
+                .load(kingdom.getQuests().get(questNumber).getImage())
                 .placeholder(R.drawable.image_placeholder_small_centered)
                 .error(R.drawable.no_image_small) //If there is an error in loading the image display the No Image, image
                 .noFade()
-                .into(ivGiverImage);
+                .into(ivQuestImage);
 
     }
 
@@ -153,6 +153,5 @@ public class QuestFragmentPage extends Fragment implements View.OnClickListener{
     private void setQuestNumber(int questNumber){
         this.questNumber = questNumber;
     }
-
 
 }

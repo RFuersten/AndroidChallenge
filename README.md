@@ -3,6 +3,8 @@ Android Challenge utilizing Retrofit and Picasso libraries
 
 Kingdom information is displayed on screen by using Retrofit library to consume APIs. Images are loaded with Picasso library after we have received the image URL from consuming the API get calls
 
+Each Kingdom has a number of quests a user can complete.
+
 Login <br>
 <img src="https://github.com/RFuersten/AndroidChallenge/blob/master/screenshots/Login.png" width="250" height="450">
 

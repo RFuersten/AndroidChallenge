@@ -16,11 +16,9 @@ import com.challenge.androidchallenge.Adapters.KingdomViewPagerAdapter;
 import com.challenge.androidchallenge.Retrofit.POJO.DetailedKingdom;
 import com.challenge.androidchallenge.Retrofit.ServiceClient;
 
-import retrofit.Callback;
-import retrofit.RetrofitError;
-import retrofit.client.Response;
-
-
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class KingdomFragment extends Fragment implements View.OnClickListener, ViewPager.OnPageChangeListener{
 
@@ -110,18 +108,19 @@ public class KingdomFragment extends Fragment implements View.OnClickListener, V
     //to a local variable. Once kingdom is retrieved it finishes initializing variables needed for this fragment
     private void getAndSetKingdom(){
         //Attempt to get the kingdom clicked on in KingdomsListFragment
-        ServiceClient.get().getKingdom(kingdomID, new Callback<DetailedKingdom>() {
+        Call<DetailedKingdom> call = ServiceClient.get().getKingdom(kingdomID);
+        call.enqueue(new Callback<DetailedKingdom>() {
             @Override
-            public void success(DetailedKingdom retrievedKingdom, Response response) {
+            public void onResponse(Call<DetailedKingdom> call, Response<DetailedKingdom> response) {
                 //Successfully retrieved the kingdom from the internet.
-                kingdom = retrievedKingdom;
+                kingdom = response.body();
 
                 //Finish initializing variables and items needed for fragment
                 finishInit();
             }
 
             @Override
-            public void failure(RetrofitError error) {
+            public void onFailure(Call<DetailedKingdom> call, Throwable t) {
                 //Failed to retrieve the list of kingdoms from the internet
             }
         });

@@ -6,22 +6,22 @@ import com.challenge.androidchallenge.Retrofit.POJO.User;
 
 import java.util.List;
 
-import retrofit.Callback;
-import retrofit.http.Body;
-import retrofit.http.GET;
-import retrofit.http.POST;
-import retrofit.http.Path;
+import retrofit2.Call;
+import retrofit2.http.Body;
+import retrofit2.http.GET;
+import retrofit2.http.POST;
+import retrofit2.http.Path;
 
 /**
  * Created by Ryan on 12/22/2015.
  */
 public interface ServiceAPI {
-    @POST("/subscribe")
-    void registerUser(@Body User user, Callback<User> callback);
+    @POST("subscribe")
+    Call<User> registerUser(@Body User user);
 
-    @GET("/kingdoms")
-    void getKingdoms(Callback<List<Kingdom>> callback);
+    @GET("kingdoms")
+    Call<List<Kingdom>> getKingdoms();
 
-    @GET("/kingdoms/{id}")
-    void getKingdom(@Path("id") int id, Callback<DetailedKingdom> callback);
+    @GET("kingdoms/{id}")
+    Call<DetailedKingdom> getKingdom(@Path("id") int id);
 }

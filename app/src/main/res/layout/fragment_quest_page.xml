@@ -28,8 +28,8 @@
         android:layout_height="200dp">
 
         <ImageView
-            android:id="@+id/ivGiverImageBackground"
-            android:contentDescription="@string/ivGiverImageDescription"
+            android:id="@+id/ivQuestImageBackground"
+            android:contentDescription="@string/ivQuestImageDescription"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:scaleType="centerCrop"/>
@@ -37,8 +37,8 @@
         <!-- CircleImageView from https://github.com/hdodenhof/CircleImageView -->
         <de.hdodenhof.circleimageview.CircleImageView
             xmlns:app="http://schemas.android.com/apk/res-auto"
-            android:id="@+id/ivGiverImage"
-            android:contentDescription="@string/ivGiverImageDescription"
+            android:id="@+id/ivQuestImage"
+            android:contentDescription="@string/ivQuestImageDescription"
             android:layout_width="160dp"
             android:layout_height="160dp"
             android:layout_centerVertical="true"
@@ -78,8 +78,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
             android:textSize="16sp"/>
-
-
+        
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

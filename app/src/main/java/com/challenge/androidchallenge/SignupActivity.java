@@ -15,9 +15,9 @@ import com.challenge.androidchallenge.Utility.SessionManager;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import retrofit.Callback;
-import retrofit.RetrofitError;
-import retrofit.client.Response;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class SignupActivity extends AppCompatActivity implements View.OnClickListener{
 
@@ -61,7 +61,7 @@ public class SignupActivity extends AppCompatActivity implements View.OnClickLis
     }
 
 
-    //Helper method to initialize variables needed for this fragment
+    //Helper method to initialize variables needed for this activity
     private void init(){
         //Get the EditText views so we can extract the inputted data from them
         etName = (EditText) findViewById(R.id.etName);
@@ -91,9 +91,10 @@ public class SignupActivity extends AppCompatActivity implements View.OnClickLis
 
             //Handle retrofit post to register the user
             //Attempt to register the user
-            ServiceClient.get().registerUser(user, new Callback<User>() {
+            Call<User> call = ServiceClient.get().registerUser(user);
+            call.enqueue(new Callback<User>() {
                 @Override
-                public void success(User user, Response response) {
+                public void onResponse(Call<User> call, Response<User> response) {
                     //Successfully registered the user
 
                     //Store the users email in the preferences file
@@ -107,7 +108,7 @@ public class SignupActivity extends AppCompatActivity implements View.OnClickLis
                 }
 
                 @Override
-                public void failure(RetrofitError error) {
+                public void onFailure(Call<User> call, Throwable t) {
                     //Failed to register the user
                 }
             });

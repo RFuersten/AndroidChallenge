@@ -1,9 +1,8 @@
 package com.challenge.androidchallenge.Retrofit;
 
-import com.squareup.okhttp.OkHttpClient;
 
-import retrofit.RestAdapter;
-import retrofit.client.OkClient;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
 
 /**
  * Created by Ryan on 12/22/2015.
@@ -11,7 +10,7 @@ import retrofit.client.OkClient;
 public class ServiceClient {
 
     private static ServiceAPI SERVICE_CLIENT;
-    final static String ROOT = "https://challenge2015.myriadapps.com/api/v1";
+    final static String ROOT = "https://challenge2015.myriadapps.com/api/v1/";
 
     static {
         setupServiceClient();
@@ -24,11 +23,11 @@ public class ServiceClient {
     }
 
     private static void setupServiceClient() {
-        RestAdapter.Builder builder = new RestAdapter.Builder()
-                .setEndpoint(ROOT)
-                .setClient(new OkClient(new OkHttpClient()));
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(ROOT)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
 
-        RestAdapter restAdapter = builder.build();
-        SERVICE_CLIENT = restAdapter.create(ServiceAPI.class);
+        SERVICE_CLIENT = retrofit.create(ServiceAPI.class);
     }
 }

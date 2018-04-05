@@ -17,6 +17,7 @@
         <!-- Kingdoms List Fragment Menu Strings -->
         <string name="action_logout">Log Out</string>
 
+
     <!-- Kingdom Card View Item Strings -->
     <string name="ivChevronArrowDescription">Image of a chevron arrow for</string>
 
@@ -25,6 +26,7 @@
     <string name="tvClimatePreText">Climate: </string>
     <string name="tvPopulationPreText">Population: </string>
     <string name="tvQuestsAmountPreText">Quests: </string>
+
 
     <!-- Kingdom Fragment Strings -->
     <string name="bPreviousPage">Previous</string>
@@ -36,8 +38,7 @@
     <string name="noQuestDescription">No description given for this quest.</string>
     <string name="tbComplete">Complete Quest</string>
     <string name="questCompleted">Quest completed:</string>
-    <string name="ivGiverImageDescription">Image of the giver of the quest</string>
+    <string name="ivQuestImageDescription">Image of the quest</string>
     <string name="ivQuestCompletedDescription">Image of a check mark</string>
-
 
 </resources>

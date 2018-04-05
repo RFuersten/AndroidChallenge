@@ -24,10 +24,9 @@ import com.challenge.androidchallenge.Utility.SessionManager;
 import java.util.ArrayList;
 import java.util.List;
 
-import retrofit.Callback;
-import retrofit.RetrofitError;
-import retrofit.client.Response;
-
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 
 public class KingdomsListFragment extends Fragment {
@@ -142,21 +141,24 @@ public class KingdomsListFragment extends Fragment {
     //to a local variable
     private void getAndSetKingdomsList(){
         //Attempt to get the list of kingdoms
-        ServiceClient.get().getKingdoms(new Callback<List<Kingdom>>() {
+        Call<List<Kingdom>> call = ServiceClient.get().getKingdoms();
+        call.enqueue(new Callback<List<Kingdom>>() {
             @Override
-            public void success(List<Kingdom> kingdomsList, Response response) {
+            public void onResponse(Call<List<Kingdom>> call, Response<List<Kingdom>> response) {
                 //Successfully retrieved the list of kingdoms from the internet.
                 //Now add all kingdoms retrieved to a local variable to be able to use the data
-                kingdoms.addAll(kingdomsList);
+                kingdoms.addAll(response.body());
 
                 //Notify the adapter of a data set change
                 mAdapter.notifyDataSetChanged();
             }
+
             @Override
-            public void failure(RetrofitError error) {
+            public void onFailure(Call<List<Kingdom>> call, Throwable t) {
                 //Failed to retrieve the list of kingdoms from the internet
             }
         });
+
     }
 
 }
